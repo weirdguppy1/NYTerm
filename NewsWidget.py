@@ -9,7 +9,7 @@ class NewsWidget(Widget):
     def __init__(self, section="popular") -> None:
         self.title = f"{section.capitalize()} News"
         self.description = f"{section.capitalize()} news from NYT."
-        self.footer = "Made by: weirdguppy1"
+        self.footer = "Made by: weirdguppy1."
         self.section = section
 
     def _showList(self, data):
@@ -28,10 +28,11 @@ class NewsWidget(Widget):
         return self._showList(data)
 
     def _content(self) -> str:
-        if(self.section in ['world', 'politics', 'us', 'science', 'business']):
+        if(self.section.lower() in ['world', 'politics', 'us', 'science', 'business', 'sports', 'style', 'food', 'ny']):
             return self._showSection(self.section)
-        return self._showPopularNews()
-
+        elif(self.section == "popular"):
+            return self._showPopularNews()
+        return f"[red bold italic]The input is not recognized by the program! 'news.{self.section} not recognized.' NO RESULTS![/]"
     # def showBox(self):
     #     console = Console()
     #     text = f"""[bold red]{self.title}[/bold red]\n{self.description}\n\n{self._content()}\n-\n[italic blue]{self.footer}[/italic blue]"""
