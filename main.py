@@ -14,6 +14,12 @@ def main(t: str):
         widget.showBox()
         return
 
+    if(t in ['news', 'n', 'newspaper']):
+        widget = NewsWidget(section="popular")
+        widget.showBox()   
+        return 
+
+
     full_input = t.split('.')
     topic = full_input[0]
     section = full_input[1]
